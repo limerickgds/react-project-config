@@ -1,0 +1,60 @@
+{
+  "name": "yiqiguang",
+  "version": "1.0.0",
+  "description": "yiqiguang react gulp",
+  "main": "index.html",
+  "scripts": {
+    "clean": "rimraf ./tpl ./assets ./r",
+    "webpack:dev": "webpack --config config/webpack.server.config.js --progress --color --watch",
+    "webpack": "webpack --config config/webpack.config.js --progress",
+    "gulp:dev": "gulp serve",
+    "gulp:build": "gulp build",
+    "dev": "npm run clean && npm run webpack:dev && npm run gulp:dev",
+    "build": "npm run clean && npm run webpack && npm run gulp:build"
+  },
+  "keywords": [
+    "yiqiguang"
+  ],
+  "author": "zhguodeshi",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "event-stream": "^3.3.2",
+    "file-loader": "^0.8.5",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-rev": "^7.0.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-usemin": "^0.3.23",
+    "gulp-util": "^3.0.7",
+    "gulp-webpack": "^1.5.0",
+    "html-webpack-plugin": "^2.19.0",
+    "node-sass": "^3.7.0",
+    "puer-freemarker": "^1.1.1",
+    "react-hot-loader": "^1.3.0",
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.2.1",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "react": "^15.1.0",
+    "react-bootstrap": "^0.29.4",
+    "react-dom": "^15.1.0"
+  }
+}
