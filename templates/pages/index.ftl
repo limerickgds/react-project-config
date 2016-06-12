@@ -19,6 +19,8 @@
     <div class="todoapp" id="root">
     </div>
     <@javascript/>
+    <!-- build:js -->
+    <!-- endbuild -->
   </body>
 </html>
 </@compress>

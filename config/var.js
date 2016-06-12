@@ -1,4 +1,4 @@
-'use strict';
+
 var path = require('path');
 
 var filePath = {
@@ -21,7 +21,21 @@ var pages = [
       ftl: 'product/index.ftl'
     }
 ];
+var pagesToPath = (function(){
+  var _p = [];
+  pages.forEach(function(_page){
+    var _obj = {
+      name: _page.name,
+      entry: path.resolve(filePath.src, 'javascript/pages/'+_page.entry),
+      ftl: path.resolve(filePath.tpl, 'pages/'+_page.ftl),
+      templates: path.resolve(filePath.templates, 'pages/'+_page.ftl)
+    };
+    _p.push(_obj);
+  });
+  return _p;
+})();
 module.exports = {
   filePath: filePath,
-  pages: pages
+  pages: pages,
+  pagesToPath: pagesToPath
 };

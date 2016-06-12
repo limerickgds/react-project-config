@@ -1,4 +1,3 @@
-'use strict';
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -46,27 +45,26 @@ var webpackConfig = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devtool: 'inline-source-maps'
 };
 
 function injectEntry(){
-  val.pages.forEach(function(item){
+  val.pagesToPath.forEach(function(item){
     webpackConfig.entry[item.name] = [
-      'webpack/hot/dev-server/?http://localhost:8080',
+      'webpack-dev-server/client?http://localhost:8010',
       'webpack/hot/only-dev-server',
-      path.resolve(js_src, 'pages/'+item.entry)
+      item.entry
     ];
   });
 }
 
 function injectHtmlWebpack(){
-  val.pages.forEach(function(item){
+  val.pagesToPath.forEach(function(item){
     webpackConfig.plugins.push(
       new HtmlWebpackPlugin({
-        filename: path.resolve(filePath.tpl, 'pages/' + item.ftl),
-        template: path.resolve(filePath.templates, 'pages/' + (item.templates||item.ftl)),
-        chunks: [item.name],
-        inject: true
+        filename: item.ftl,
+        template: item.templates||item.ftl,
       })
     );
   });

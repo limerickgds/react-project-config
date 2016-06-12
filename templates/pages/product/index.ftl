@@ -15,6 +15,8 @@
     <div class="index" id="root1">
     </div>
     <@javascript/>
+    <!-- build:js -->
+    <!-- endbuild -->
   </body>
 </html>
 </@compress>

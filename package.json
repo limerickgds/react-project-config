@@ -5,11 +5,10 @@
   "main": "index.html",
   "scripts": {
     "clean": "rimraf ./tpl ./assets ./r",
-    "webpack:dev": "webpack --config config/webpack.server.config.js --progress --color --watch",
-    "webpack": "webpack --config config/webpack.config.js --progress",
-    "gulp:dev": "gulp serve",
+    "webpack": "webpack --config config/webpack.config.js --progress --debug",
+    "gulp:dev": "npm run clean && gulp serve",
     "gulp:build": "gulp build",
-    "dev": "npm run clean && npm run webpack:dev && npm run gulp:dev",
+    "dev": "npm run clean && node server.js & npm run gulp:dev",
     "build": "npm run clean && npm run webpack && npm run gulp:build"
   },
   "keywords": [
@@ -31,6 +30,8 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.9",
+    "gulp-html-replace": "^1.6.0",
+    "gulp-inject": "^4.1.0",
     "gulp-load-plugins": "^1.2.4",
     "gulp-rev": "^7.0.0",
     "gulp-sass": "^2.3.1",

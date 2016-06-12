@@ -50,17 +50,17 @@ var webpackConfig = {
 };
 
 function injectEntry(){
-  val.pages.forEach(function(item){
-    webpackConfig.entry[item.name] = path.resolve(js_src, 'pages/'+item.entry);
+  val.pagesToPath.forEach(function(item){
+    webpackConfig.entry[item.name] = item.entry;
   });
 }
 
 function injectHtmlWebpack(){
-  val.pages.forEach(function(item){
+  val.pagesToPath.forEach(function(item){
     webpackConfig.plugins.push(
       new HtmlWebpackPlugin({
-        filename: path.resolve(filePath.tpl, 'pages/' + item.ftl),
-        template: path.resolve(filePath.templates, 'pages/' + (item.templates||item.ftl)),
+        filename: item.ftl,
+        template: item.templates || item.ftl,
         chunks: [item.name],
         inject: true
       })

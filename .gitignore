@@ -2,3 +2,5 @@ node_modules/
 assets/
 r/
 tpl/
+allPuerFRoutes.js
+npm-debug.log
