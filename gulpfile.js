@@ -1,13 +1,10 @@
 var path = require('path');
 var gulp = require('gulp');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
 var $ = require('gulp-load-plugins')();
+var eventStream = require('event-stream');
 var runSequence = require('run-sequence');
 var config = require('./config/gulp.config.js');
 var val = require('./config/var.js');
-var webpackConfig = require('./config/webpack.config.js');
-var webpackServerConfig = require('./config/webpack.server.config.js');
 var puerfConfig = require('./config/puerf.config.js');
 
 //test
@@ -16,8 +13,9 @@ var through = require('through2');
 
 gulp.task('serve',function(cb){
   runSequence(
-    'htmlreplace',
-    'tpl:copy',
+    [
+      'tpl:copy'
+    ],
     'puerf',
     cb);
 });
@@ -40,15 +38,9 @@ gulp.task('tpl:copy',function(){
         .pipe(gulp.dest(_config.dest));
 });
 
-gulp.task('webpack', function(cb){
-  webpack(webpackConfig,function(err,stats){
-    console.log(stats);
-  });
-});
-
 gulp.task('htmlreplace',function(cb){
   var _config = config.htmlreplace;
-  var tasks = val.pagesToPath.forEach(function(page){
+  var tasks = val.pagesToPath.map(function(page){
     var _dest = page.ftl.slice(0,page.ftl.lastIndexOf('/'));
     return gulp.src(page.templates)
       .pipe($.htmlReplace({
@@ -60,5 +52,5 @@ gulp.task('htmlreplace',function(cb){
       .pipe(gulp.dest(_dest))
       .on('error', $.util.log);
    });
-  cb();
+   eventStream.merge(tasks).on('end', cb);
 });
