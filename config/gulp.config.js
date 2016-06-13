@@ -22,6 +22,9 @@ module.exports = {
     src: dir_config.sass_src,
     dest: dir_config.sass_dest
   },
+  watch:{
+    templates: dir_config.ftl_src
+  },
   htmlreplace: {
     src: dir_config.ftl_pages_src,
     dest: dir_config.ftl_pages_dest

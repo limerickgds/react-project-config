@@ -19,10 +19,9 @@ var _PLATFORM = os.platform();
 gulp.task('serve',function(cb){
   runSequence(
    'tpl:copy',
-    [
-      'puerf',
-      'js:serve'
-    ],
+    'watch',
+    'js:serve',
+    'puerf',
     cb);
 });
 
@@ -34,6 +33,10 @@ gulp.task('build',function(cb){
   runSequence(
     'tpl:copy',
     cb);
+});
+
+gulp.task('watch', function(){
+  gulp.watch(config.watch.templates,['htmlreplace']);
 });
 
 /**

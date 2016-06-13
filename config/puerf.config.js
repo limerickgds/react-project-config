@@ -1,10 +1,10 @@
-
+var val = require('./var.js');
 module.exports = {
   routes: ['config/mockRoutes.config.js','config/ftlRoutes.config.js'],
 
-  templates: 'tpl',
+  templates: 'tpl/',
 
-  root:'',
+  root: val.filePath.app,
 
   port: 8888,
 
