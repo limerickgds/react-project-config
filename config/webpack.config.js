@@ -67,19 +67,6 @@ function injectHtmlWebpack(){
     );
   });
 }
-function injectCommons(){
-  var _chunks = [];
-  val.pages.forEach(function(item){
-    _chunks.push(item.name);
-  });
-  webpackConfig.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "common",
-      filename: 'lib/common.js',
-      chunks: _chunks
-    })
-  );
-}
 
 (function(){
   injectEntry();

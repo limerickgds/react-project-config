@@ -18,7 +18,7 @@ var _PLATFORM = os.platform();
  */
 gulp.task('serve',function(cb){
   runSequence(
-    'tpl:copy',
+   'tpl:copy',
     [
       'puerf',
       'js:serve'

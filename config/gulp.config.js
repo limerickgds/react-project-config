@@ -27,7 +27,7 @@ module.exports = {
     dest: dir_config.ftl_pages_dest
   },
   tplCopy: {
-    src: [dir_config.ftl_src,'!' + dir_config.ftl_pages_src],
+    src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
     dest: dir_config.ftl_dest
   }
 };
