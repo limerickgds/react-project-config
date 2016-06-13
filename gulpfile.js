@@ -6,6 +6,11 @@ var runSequence = require('run-sequence');
 var config = require('./config/gulp.config.js');
 var val = require('./config/var.js');
 var puerfConfig = require('./config/puerf.config.js');
+var os = require('os');
+var child_process = require('child_process');
+
+
+var _PLATFORM = os.platform();
 
 /**
  * [task serve]
@@ -14,7 +19,10 @@ var puerfConfig = require('./config/puerf.config.js');
 gulp.task('serve',function(cb){
   runSequence(
     'tpl:copy',
-    'puerf',
+    [
+      'puerf',
+      'js:serve'
+    ],
     cb);
 });
 
@@ -37,6 +45,11 @@ gulp.task('puerf', function() {
     puerf.start(puerfConfig);
 });
 
+gulp.task('js:serve',function(){
+
+  return child_process.spawn('node',['server.js'],{ stdio: 'inherit'});
+});
+
 /**
  * [task tpl:copy]
  * copy templates to tpl without pages
@@ -49,12 +62,13 @@ gulp.task('tpl:copy',function(){
 
 /**
  * [task htmlreplace]
- * insert script into html 
+ * insert script into html
  */
 gulp.task('htmlreplace',function(cb){
-  var _config = config.htmlreplace;
+  var _config = config.htmlreplace,
+      _platform = os.platform;
   var tasks = val.pagesToPath.map(function(page){
-    var _dest = page.ftl.slice(0,page.ftl.lastIndexOf('/'));
+    var _dest = page.ftl.slice(0,page.ftl.lastIndexOf(_PLATFORM === 'win32' ? '\\': '/'));
     return gulp.src(page.templates)
       .pipe($.htmlReplace({
         'js': {

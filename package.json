@@ -7,9 +7,9 @@
     "clean": "rimraf ./tpl ./assets ./r",
     "replace": "gulp htmlreplace",
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
-    "gulp:dev": "npm run clean && gulp serve",
+    "gulp:dev": "gulp serve",
     "gulp:build": "gulp build",
-    "dev": "npm run clean && npm run replace && node server.js & npm run gulp:dev",
+    "dev": "npm run clean && npm run replace && npm run gulp:dev",
     "build": "npm run clean && npm run webpack && npm run gulp:build"
   },
   "keywords": [
