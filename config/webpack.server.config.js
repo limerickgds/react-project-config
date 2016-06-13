@@ -12,7 +12,7 @@ var webpackConfig = {
   },
   output: {
     path: js_assets,
-    publicPath: 'http://localhost:8080/assets/javascript/',
+    publicPath: 'http://localhost:8010/assets/javascript/',
     filename: 'pages/[name].js'
   },
   module: {

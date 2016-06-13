@@ -7,37 +7,50 @@ var config = require('./config/gulp.config.js');
 var val = require('./config/var.js');
 var puerfConfig = require('./config/puerf.config.js');
 
-//test
-var through = require('through2');
-
-
+/**
+ * [task serve]
+ * development environment
+ */
 gulp.task('serve',function(cb){
   runSequence(
-    [
-      'tpl:copy'
-    ],
+    'tpl:copy',
     'puerf',
     cb);
 });
 
+/**
+ * [task build]
+ * product environment
+ */
 gulp.task('build',function(cb){
   runSequence(
     'tpl:copy',
     cb);
 });
 
-
+/**
+ * [task puerf]
+ * use puerf to render freemarker templates
+ */
 gulp.task('puerf', function() {
   var puerf = require('puer-freemarker');
     puerf.start(puerfConfig);
 });
 
+/**
+ * [task tpl:copy]
+ * copy templates to tpl without pages
+ */
 gulp.task('tpl:copy',function(){
   var _config = config.tplCopy;
   return gulp.src(_config.src)
         .pipe(gulp.dest(_config.dest));
 });
 
+/**
+ * [task htmlreplace]
+ * insert script into html 
+ */
 gulp.task('htmlreplace',function(cb){
   var _config = config.htmlreplace;
   var tasks = val.pagesToPath.map(function(page){
