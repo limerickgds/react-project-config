@@ -31,7 +31,7 @@ gulp.task('serve',function(cb){
  */
 gulp.task('build',function(cb){
   runSequence(
-    'tpl:copy',
+    'usemin',
     cb);
 });
 
@@ -83,4 +83,39 @@ gulp.task('htmlreplace',function(cb){
       .on('error', $.util.log);
    });
    eventStream.merge(tasks).on('end', cb);
+});
+
+gulp.task('usemin',function(cb){
+  var _config = config.usemin;
+  return gulp.src(_config.src)
+          .pipe($.usemin({
+            css: [
+              $.sourcemaps.init({
+                loadMaps: false
+              }),
+              $.minifyCss(),
+              $.rev(),
+              $.sourcemaps.write('./')
+            ],
+            js: [
+              $.sourcemaps.init({
+                loadMaps: false
+              }),
+              $.uglify(),
+              $.rev(),
+              $.sourcemaps.write('./')
+            ],
+            js1: [
+              $.sourcemaps.init({
+                loadMaps: false
+              }),
+              $.uglify(),
+              $.rev(),
+              $.sourcemaps.write('./')
+            ],
+            assetsDir: _config.options.assetsDir,
+            path: _config.options.path,
+            outputRelativePath: _config.options.outputRelativePath
+          }))
+          .pipe(gulp.dest(_config.dest));
 });
