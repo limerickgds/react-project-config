@@ -36,13 +36,11 @@ var webpackConfig = {
       }
     ]
   },
-  externals: [
-      {
-      'react' : 'react',
-      'react-dom' : 'react-dom',
-      'react-bootstrap': 'react-bootstrap'
-      }
-  ],
+  externals: {
+      'react' : 'React',
+      'react-dom' : 'ReactDom',
+      'react-bootstrap': 'ReactBootstrap'
+  },
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(),

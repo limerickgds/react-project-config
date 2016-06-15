@@ -35,13 +35,11 @@ var webpackConfig = {
       }
     ]
   },
-  externals: [
-      {
-      'react' : 'react',
-      'react-dom' : 'react-dom',
-      'react-bootstrap': 'react-bootstrap'
-      }
-  ],
+  externals: {
+      'react' : 'React',
+      'react-dom' : 'ReactDOM',
+      'react-bootstrap': 'ReactBootstrap'
+  },
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin()
