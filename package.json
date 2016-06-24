@@ -5,12 +5,12 @@
   "main": "index.html",
   "scripts": {
     "clean": "rimraf ./build",
-    "replace": "gulp htmlreplace",
+    "replace": "gulp tplreplace",
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
+    "tpl:copy": "gulp tpl:copy",
     "gulp:dev": "gulp serve",
-    "gulp:build": "gulp build",
-    "dev": "npm run clean && npm run replace && npm run gulp:dev",
-    "build": "npm run clean && npm run webpack && npm run gulp:build"
+    "dev": "rimraf ./assets && npm run replace && npm run gulp:dev",
+    "build": "npm run clean && gulp tpl:copy && npm run webpack"
   },
   "keywords": [
     "yiqiguang"
@@ -28,15 +28,8 @@
     "event-stream": "^3.3.2",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^2.0.9",
     "gulp-html-replace": "^1.6.0",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-rev": "^7.0.0",
-    "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3",
-    "gulp-usemin": "^0.3.23",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.19.0",
     "node-sass": "^3.7.0",

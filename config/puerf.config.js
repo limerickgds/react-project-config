@@ -2,7 +2,7 @@ var val = require('./var.js');
 module.exports = {
   routes: ['config/mockRoutes.config.js','config/ftlRoutes.config.js'],
 
-  templates: 'tpl/',
+  templates: 'assets/tpl/',
 
   root: val.filePath.app.assets,
 

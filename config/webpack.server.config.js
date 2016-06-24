@@ -19,7 +19,7 @@ var webpackConfig = {
     loaders: [
       {
         test: /src(\\|\/).+\.scss$/,
-        loader: 'style!css!sass?sourceMap'
+        loader: 'style!css!sass?sourceMap=true'
       },
       {
         test: /src(\\|\/).+\.js?$/,
@@ -30,8 +30,8 @@ var webpackConfig = {
         }
       },
       {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=8192'
+        test: /\.(png|jpg|jpeg)$/,
+        loader: 'url-loader?limit=10000&name=../res/[hash:8].[name].[ext]',
       }
     ]
   },
@@ -48,7 +48,7 @@ var webpackConfig = {
 };
 
 function injectEntry(){
-  val.pagesToPath.forEach(function(item){
+  val.pagesToPath('dev').forEach(function(item){
     webpackConfig.entry[item.name] = [
       'webpack-dev-server/client?http://localhost:8010',
       'webpack/hot/only-dev-server',
@@ -58,7 +58,7 @@ function injectEntry(){
 }
 
 function injectHtmlWebpack(){
-  val.pagesToPath.forEach(function(item){
+  val.pagesToPath('dev').forEach(function(item){
     webpackConfig.plugins.push(
       new HtmlWebpackPlugin({
         filename: item.ftl,

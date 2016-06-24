@@ -1,6 +1,7 @@
 var path       = require('path');
 var root       = './';
 var src        = './src';
+var assets     = './assets';
 var build      = './build';
 var cdn        = './r';
 
@@ -9,8 +10,9 @@ var dir_config = {
   sass_dest: build + '/css',
   ftl_src: root + 'templates/**/*.{ftl,html}',
   ftl_dest: build + '/tpl',
+  ftl_dest_dev: assets + '/tpl',
   ftl_pages_src: root + 'templates/pages/',
-  ftl_pages_dest: build + '/tpl/pages'
+  ftl_pages_dest_dev: assets + '/tpl/pages'
 };
 module.exports = {
   clean: {
@@ -23,13 +25,19 @@ module.exports = {
   watch:{
     templates: dir_config.ftl_src
   },
-  htmlreplace: {
+  tplreplace: {
     src: dir_config.ftl_pages_src,
-    dest: dir_config.ftl_pages_dest
+    dest: dir_config.ftl_pages_dest_dev
   },
   tplCopy: {
-    src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
-    dest: dir_config.ftl_dest
+    dev:{
+      src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
+      dest: dir_config.ftl_dest_dev
+    },
+    build:{
+      src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
+      dest: dir_config.ftl_dest
+    }
   },
   usemin: {
     src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],

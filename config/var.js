@@ -9,7 +9,8 @@ var filePath = {
   node_modules: path.resolve(__dirname, '../node_modules'),
   src: path.resolve(__dirname,'../src'),
   templates: path.resolve(__dirname,'../templates'),
-  tpl: path.resolve(__dirname,'../build/tpl')
+  tpl: path.resolve(__dirname,'../build/tpl'),
+  tpl_dev: path.resolve(__dirname,'../assets/tpl')
 };
 var pages = [
   {
@@ -22,19 +23,20 @@ var pages = [
       ftl: 'product/index.ftl'
     }
 ];
-var pagesToPath = (function(){
+var pagesToPath = function(env){
   var _p = [];
+  var _env = env || 'build';
   pages.forEach(function(_page){
     var _obj = {
       name: _page.name,
       entry: path.resolve(filePath.src, 'javascript/pages/'+_page.entry),
-      ftl: path.resolve(filePath.tpl, 'pages/'+_page.ftl),
+      ftl: path.resolve(_env === 'build' ? filePath.tpl : filePath.tpl_dev, 'pages/'+_page.ftl),
       templates: path.resolve(filePath.templates, 'pages/'+_page.ftl)
     };
     _p.push(_obj);
   });
   return _p;
-})();
+};
 module.exports = {
   filePath: filePath,
   pages: pages,
