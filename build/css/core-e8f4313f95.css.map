@@ -1,1 +1,0 @@
-{"version":3,"sources":["../react-project-config/src/sass/grid.scss","core.css"],"names":[],"mappings":"AAAA,MACE,iBAAkB,KCApB,MACE,UAAW","file":"../css/core-e8f4313f95.css","sourcesContent":[".grid{\r\n  background-color: #999;\r\n}\r\n","@import \"./grid.scss\";\r\n.base{\r\n  font-size: 10px;\r\n}\r\n"],"sourceRoot":"/source/"}
