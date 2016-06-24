@@ -1,22 +1,20 @@
 var path       = require('path');
 var root       = './';
 var src        = './src';
-var assets     = './assets';
+var build      = './build';
 var cdn        = './r';
 
 var dir_config = {
   sass_src: src + '/sass/**/*.{sass,scss}',
-  sass_dest: assets + '/css',
-  js_src: src + '/javascript/**/*.{js,jsx}',
-  js_dest: assets + '/javascript',
+  sass_dest: build + '/css',
   ftl_src: root + 'templates/**/*.{ftl,html}',
-  ftl_dest: root + 'tpl',
+  ftl_dest: build + '/tpl',
   ftl_pages_src: root + 'templates/pages/',
-  ftl_pages_dest: root + 'tpl/pages'
+  ftl_pages_dest: build + '/tpl/pages'
 };
 module.exports = {
   clean: {
-    src: [assets, dir_config.ftl_dest,cdn]
+    src: [build]
   },
   sass: {
     src: dir_config.sass_src,
@@ -36,10 +34,11 @@ module.exports = {
   usemin: {
     src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
     dest: dir_config.ftl_dest,
+    sass_base: src+'/sass',
     options: {
         assetsDir: '',  // 根搜索目录
         path: './',     //相对于templates的css,js搜索目录
-        outputRelativePath: '../r'  //相对于tpl的输出目录
+        outputRelativePath: '../'  //相对于tpl的输出目录
       }
   }
 };

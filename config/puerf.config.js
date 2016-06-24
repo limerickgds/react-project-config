@@ -4,7 +4,7 @@ module.exports = {
 
   templates: 'tpl/',
 
-  root: val.filePath.app,
+  root: val.filePath.app.assets,
 
   port: 8888,
 

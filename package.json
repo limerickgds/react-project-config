@@ -4,7 +4,7 @@
   "description": "yiqiguang react gulp",
   "main": "index.html",
   "scripts": {
-    "clean": "rimraf ./tpl ./assets ./r",
+    "clean": "rimraf ./build",
     "replace": "gulp htmlreplace",
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
     "gulp:dev": "gulp serve",
@@ -32,7 +32,6 @@
     "gulp-clean-css": "^2.0.9",
     "gulp-html-replace": "^1.6.0",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-minify-css": "^1.2.4",
     "gulp-rev": "^7.0.0",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",

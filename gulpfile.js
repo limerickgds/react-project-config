@@ -84,7 +84,12 @@ gulp.task('htmlreplace',function(cb){
    });
    eventStream.merge(tasks).on('end', cb);
 });
-
+gulp.task('sass',function(){
+  return gulp.src('./src/sass/base.scss')
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.rev())
+        .pipe(gulp.dest('./r'));
+});
 gulp.task('usemin',function(cb){
   var _config = config.usemin;
   return gulp.src(_config.src)
@@ -93,7 +98,10 @@ gulp.task('usemin',function(cb){
               $.sourcemaps.init({
                 loadMaps: false
               }),
-              $.minifyCss(),
+              $.sass({
+                includePaths: [_config.sass_base]
+              }).on('error', $.sass.logError),
+              $.cleanCss(),
               $.rev(),
               $.sourcemaps.write('./')
             ],

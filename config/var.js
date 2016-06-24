@@ -4,11 +4,12 @@ var path = require('path');
 var filePath = {
   app: path.resolve(__dirname,'../'),
   assets: path.resolve(__dirname,'../assets'),
+  build: path.resolve(__dirname,'../build'),
   config: path.resolve(__dirname),
   node_modules: path.resolve(__dirname, '../node_modules'),
   src: path.resolve(__dirname,'../src'),
   templates: path.resolve(__dirname,'../templates'),
-  tpl: path.resolve(__dirname,'../tpl')
+  tpl: path.resolve(__dirname,'../build/tpl')
 };
 var pages = [
   {

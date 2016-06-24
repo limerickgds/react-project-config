@@ -5,15 +5,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var val = require('./var.js');
 var filePath = val.filePath;
 var js_src = path.resolve(filePath.src, 'javascript');
-var js_assets = path.resolve(filePath.assets, 'javascript');
+var js_build = path.resolve(filePath.build, 'javascript');
 
 
 var webpackConfig = {
   entry: {
   },
   output: {
-    path: js_assets,
-    publicPath: '/assets/javascript/',
+    path: js_build,
+    publicPath: '/javascript/',
     filename: 'pages/[name].[hash].js'
   },
   module: {
