@@ -18,7 +18,7 @@ var _PLATFORM = os.platform();
  */
 gulp.task('serve',function(cb){
   runSequence(
-    'tpl:copy',
+    'tpl:copy:dev',
     'watch',
     'js:serve',
     'puerf',
@@ -71,12 +71,12 @@ gulp.task('tplreplace',function(cb){
   var _config = config.tplreplace,
       _platform = os.platform;
       console.log(_config);
-  var tasks = val.pagesToPath.map(function(page){
+  var tasks = val.pagesToPath('dev').map(function(page){
     var _dest = page.ftl.slice(0,page.ftl.lastIndexOf(_PLATFORM === 'win32' ? '\\': '/'));
     return gulp.src(page.templates)
       .pipe($.htmlReplace({
         'js': {
-          src: 'http://localhost:8010/assets/javascript/pages/'+ page.name,
+          src: 'http://localhost:8010/assets/javascript/'+ page.name,
           tpl:'<script src="%s.js"></script>'
         }
       }))

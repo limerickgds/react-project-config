@@ -10,11 +10,12 @@ var js_build = path.resolve(filePath.build, 'javascript');
 
 var webpackConfig = {
   entry: {
+    common: ['react','react-dom']
   },
   output: {
     path: js_build,
     publicPath: '/javascript/',
-    filename: 'pages/[name].[hash].js'
+    filename: '[name].[hash].js'
   },
   module: {
     loaders: [
@@ -38,8 +39,7 @@ var webpackConfig = {
   },
   externals: {
       'react' : 'React',
-      'react-dom' : 'ReactDom',
-      'react-bootstrap': 'ReactBootstrap'
+      'react-dom' : 'ReactDom'
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -59,7 +59,7 @@ function injectHtmlWebpack(){
       new HtmlWebpackPlugin({
         filename: item.ftl,
         template: item.templates || item.ftl,
-        chunks: [item.name],
+        chunks: ['common',item.name],
         inject: true
       })
     );

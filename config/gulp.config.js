@@ -38,15 +38,5 @@ module.exports = {
       src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
       dest: dir_config.ftl_dest
     }
-  },
-  usemin: {
-    src: [dir_config.ftl_src,'!'+ dir_config.ftl_pages_src +'**/*.{ftl,html}'],
-    dest: dir_config.ftl_dest,
-    sass_base: src+'/sass',
-    options: {
-        assetsDir: '',  // 根搜索目录
-        path: './',     //相对于templates的css,js搜索目录
-        outputRelativePath: '../'  //相对于tpl的输出目录
-      }
   }
 };

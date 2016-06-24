@@ -13,7 +13,7 @@ var webpackConfig = {
   output: {
     path: js_assets,
     publicPath: 'http://localhost:8010/assets/javascript/',
-    filename: 'pages/[name].js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -34,11 +34,6 @@ var webpackConfig = {
         loader: 'url-loader?limit=10000&name=../res/[hash:8].[name].[ext]',
       }
     ]
-  },
-  externals: {
-      'react' : 'React',
-      'react-dom' : 'ReactDOM',
-      'react-bootstrap': 'ReactBootstrap'
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -63,6 +58,8 @@ function injectHtmlWebpack(){
       new HtmlWebpackPlugin({
         filename: item.ftl,
         template: item.templates||item.ftl,
+        chunks: [item.name],
+        inject: true
       })
     );
   });
