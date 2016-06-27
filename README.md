@@ -38,7 +38,7 @@
  多页面打包，使用HtmlWebpackPlugin进行多页面打包，由于页面较多，所以将页面统一使用配置文件进行统一配置，然后通过injectHtmlWebpack方法向plugins添加HtmlWebpackPlugin。
 
  图片配置，限制base64的图片大小为10kb，超过的图片放到../res目录下。
- 
+
 #### 开发环境
 使用了puer-freemarker模板编译服务，webpack-dev-server。输出到assets目录下，步骤如下：
 ```javascript
@@ -54,4 +54,3 @@
 ## 其它问题
 - 端口号问题，大家可以自行修改。
 - puer-freemarker这个只是目前使用的一个模板server，大家也可以用tomcat启动其它server，直接将配置中的puer 注释掉即可。
-- 在修改ftl源文件后，puer server会崩溃，原因是，源文件在替代assets中生成的新的ftl，会导致puer-freemarker暂时无法找到ftl文件，会产生崩溃，所以在启动puer server后尽量不要修改ftl，或者启动tomcat等server来代替puer-freemarker。
