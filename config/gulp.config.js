@@ -23,6 +23,10 @@ module.exports = {
     src: dir_config.sass_src,
     dest: dir_config.sass_dest
   },
+  del: {
+    dev: devbuild,
+    build: build
+  },
   watch:{
     templates: dir_config.ftl_src
   },

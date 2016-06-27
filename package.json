@@ -4,13 +4,11 @@
   "description": "yiqiguang react gulp",
   "main": "index.html",
   "scripts": {
-    "clean": "rimraf ./build",
     "replace": "gulp tplreplace",
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
     "tpl:copy": "gulp tpl:copy",
-    "gulp:dev": "gulp serve",
-    "dev": "rimraf ./devbuild && npm run gulp:dev",
-    "build": "npm run clean && gulp tpl:copy && npm run webpack"
+    "dev": "gulp serve",
+    "build": "gulp build && npm run webpack"
   },
   "keywords": [
     "yiqiguang"

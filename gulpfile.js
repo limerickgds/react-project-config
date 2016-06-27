@@ -8,6 +8,7 @@ var val = require('./config/var.js');
 var puerfConfig = require('./config/puerf/puerf.config.js');
 var os = require('os');
 var child_process = require('child_process');
+var rimraf = require('rimraf');
 
 
 var _PLATFORM = os.platform();
@@ -18,12 +19,28 @@ var _PLATFORM = os.platform();
  */
 gulp.task('serve',function(cb){
   runSequence(
+    'clean:dev',
     'tpl:copy:dev',
     'tplreplace',
     'js:serve',
     'puerf',
     'watch',
     cb);
+});
+
+gulp.task('build', function(cb){
+  runSequence(
+    'clean',
+    'tpl:copy',
+    cb);
+});
+
+gulp.task('clean',function(cb){
+  rimraf(config.del.build,{},cb);
+});
+
+gulp.task('clean:dev',function(cb){
+  rimraf(config.del.dev,{},cb);
 });
 
 gulp.task('watch', function(){
