@@ -19,9 +19,10 @@ var _PLATFORM = os.platform();
 gulp.task('serve',function(cb){
   runSequence(
     'tpl:copy:dev',
-    'watch',
+    'tplreplace',
     'js:serve',
     'puerf',
+    'watch',
     cb);
 });
 
