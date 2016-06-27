@@ -4,9 +4,7 @@
   "description": "yiqiguang react gulp",
   "main": "index.html",
   "scripts": {
-    "replace": "gulp tplreplace",
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
-    "tpl:copy": "gulp tpl:copy",
     "dev": "gulp serve",
     "build": "gulp build && npm run webpack"
   },
