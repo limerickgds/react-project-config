@@ -37,7 +37,10 @@ gulp.task('puerf', function() {
   var puerf = require('puer-freemarker');
     puerf.start(puerfConfig);
 });
-
+/**
+ * [task js:serve]
+ * use child_process to launch a server with webpack-dev-server
+ */
 gulp.task('js:serve',function(){
 
   return child_process.spawn('node',['server.js'],{ stdio: 'inherit'});
@@ -65,7 +68,8 @@ gulp.task('tpl:copy',function(){
 
 /**
  * [task tplreplace]
- * insert script into html
+ * insert script tag into html,
+ * changed this script src  to 'http://localhost:8010/assets*'
  */
 gulp.task('tplreplace',function(cb){
   var _config = config.tplreplace,
