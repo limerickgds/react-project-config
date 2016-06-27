@@ -32,20 +32,13 @@
   将公共ftl移入build目录，这些公共ftl文件是，没有经过html-webpack-plugin打包处理的文件。
 3. webpack  
   进行webpack打包，有以下几个优化点：
-<<<<<<< HEAD
 
  公共进行统一打包，externals 配置来忽略 react，react-dom。在entry中配置一个 common chunk来包含这两个库。  
 
  多页面打包，使用HtmlWebpackPlugin进行多页面打包，由于页面较多，所以将页面统一使用配置文件进行统一配置，然后通过injectHtmlWebpack方法向plugins添加HtmlWebpackPlugin。
 
  图片配置，限制base64的图片大小为10kb，超过的图片放到../res目录下。
-
-=======
--  公共进行统一打包，externals 配置来忽略 react，react-dom。在entry中配置一个 common chunk来包含这两个库。
--  多页面打包，使用HtmlWebpackPlugin进行多页面打包，由于页面较多，所以将页面统一使用配置文件进行统一配置，然后通过injectHtmlWebpack方法向plugins添加HtmlWebpackPlugin。
--  图片配置，限制base64的图片大小为10kb，超过的图片放到../res目录下。
--  
->>>>>>> origin/master
+ 
 #### 开发环境
 使用了puer-freemarker模板编译服务，webpack-dev-server。输出到assets目录下，步骤如下：
 ```javascript
