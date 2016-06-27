@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var val = require('./config/var.js');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./config/webpack.server.config.js');
 
@@ -9,5 +10,5 @@ var server = new WebpackDevServer(compiler,{
   hot: true,
   noInfo: false,
   historyApiFallback: true
-}).listen('8010',"localhost",function(err){
+}).listen(val.post.webpackDev,"localhost",function(err){
 });

@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="">
-      测试
+      测试 <span>${name}</span>
     </div>
     <div class="" id="side">
     </div>

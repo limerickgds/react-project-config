@@ -12,7 +12,7 @@ var webpackConfig = {
   },
   output: {
     path: js_assets,
-    publicPath: 'http://localhost:8010/assets/javascript/',
+    publicPath: '/assets/javascript/',
     filename: '[name].js'
   },
   module: {
@@ -45,7 +45,7 @@ var webpackConfig = {
 function injectEntry(){
   val.pagesToPath('dev').forEach(function(item){
     webpackConfig.entry[item.name] = [
-      'webpack-dev-server/client?http://localhost:8010',
+      'webpack-dev-server/client?http://localhost:'+ val.post.webpackDev,
       'webpack/hot/only-dev-server',
       item.entry
     ];

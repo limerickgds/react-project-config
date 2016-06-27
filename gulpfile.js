@@ -5,7 +5,7 @@ var eventStream = require('event-stream');
 var runSequence = require('run-sequence');
 var config = require('./config/gulp.config.js');
 var val = require('./config/var.js');
-var puerfConfig = require('./config/puerf.config.js');
+var puerfConfig = require('./config/puerf/puerf.config.js');
 var os = require('os');
 var child_process = require('child_process');
 
