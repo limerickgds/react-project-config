@@ -17,7 +17,7 @@ var _PLATFORM = os.platform();
  * [task serve]
  * development environment
  */
-gulp.task('serve',function(cb){
+gulp.task('dev',function(cb){
   runSequence(
     'clean:dev',
     'tpl:copy:dev',

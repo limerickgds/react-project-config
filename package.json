@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
-    "dev": "gulp serve",
+    "dev": "gulp dev",
     "build": "gulp build && npm run webpack"
   },
   "keywords": [
