@@ -4,15 +4,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var val = require('./var.js');
 var filePath = val.filePath;
 var js_src = path.resolve(filePath.src, 'javascript');
-var js_assets = path.resolve(filePath.assets, 'javascript');
+var js_devbuild = path.resolve(filePath.devbuild, 'javascript');
 
 
 var webpackConfig = {
   entry: {
   },
   output: {
-    path: js_assets,
-    publicPath: '/assets/javascript/',
+    path: js_devbuild,
+    publicPath: 'http://localhost:'+ val.posts.webpackDev + '/devbuild/javascript/',
     filename: '[name].js'
   },
   module: {
@@ -45,7 +45,7 @@ var webpackConfig = {
 function injectEntry(){
   val.pagesToPath('dev').forEach(function(item){
     webpackConfig.entry[item.name] = [
-      'webpack-dev-server/client?http://localhost:'+ val.post.webpackDev,
+      'webpack-dev-server/client?http://localhost:'+ val.posts.webpackDev,
       'webpack/hot/only-dev-server',
       item.entry
     ];

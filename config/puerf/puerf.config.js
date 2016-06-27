@@ -3,13 +3,12 @@ var _routes  = [];
 val.pages.forEach(function(p){
   _routes.push('config/puerf/mock/' + p.name + '.config.js');
 });
-console.log(_routes)
 module.exports = {
   routes: _routes,
 
-  templates: 'assets/tpl/',
+  templates: 'devbuild/tpl/',
 
-  root: val.filePath.app.assets,
+  root: val.filePath.app.devbuild,
 
   port: val.posts.puerf,
 

@@ -70,7 +70,7 @@ gulp.task('tpl:copy',function(){
 /**
  * [task tplreplace]
  * insert script tag into html,
- * changed this script src  to 'http://localhost:8010/assets*'
+ * changed this script src  to 'http://localhost:8010/devbuild*'
  */
 gulp.task('tplreplace',function(cb){
   var _config = config.tplreplace,
@@ -81,7 +81,7 @@ gulp.task('tplreplace',function(cb){
     return gulp.src(page.templates)
       .pipe($.htmlReplace({
         'js': {
-          src: 'http://localhost:8010/assets/javascript/'+ page.name,
+          src: _config.options.pre + page.name,
           tpl:'<script src="%s.js"></script>'
         }
       }))

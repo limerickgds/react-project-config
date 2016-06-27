@@ -9,7 +9,7 @@
     "webpack": "webpack --config config/webpack.config.js --progress --debug",
     "tpl:copy": "gulp tpl:copy",
     "gulp:dev": "gulp serve",
-    "dev": "rimraf ./assets && npm run gulp:dev",
+    "dev": "rimraf ./devbuild && npm run gulp:dev",
     "build": "npm run clean && gulp tpl:copy && npm run webpack"
   },
   "keywords": [

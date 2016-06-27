@@ -10,14 +10,14 @@ var posts = {
 
 var filePath = {
   app: path.resolve(__dirname,'../'),
-  assets: path.resolve(__dirname,'../assets'),
+  devbuild: path.resolve(__dirname,'../devbuild'),
   build: path.resolve(__dirname,'../build'),
   config: path.resolve(__dirname),
   node_modules: path.resolve(__dirname, '../node_modules'),
   src: path.resolve(__dirname,'../src'),
   templates: path.resolve(__dirname,'../templates'),
   tpl: path.resolve(__dirname,'../build/tpl'),
-  tpl_dev: path.resolve(__dirname,'../assets/tpl')
+  tpl_dev: path.resolve(__dirname,'../devbuild/tpl')
 };
 
 /**

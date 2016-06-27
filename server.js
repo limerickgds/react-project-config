@@ -10,5 +10,5 @@ var server = new WebpackDevServer(compiler,{
   hot: true,
   noInfo: false,
   historyApiFallback: true
-}).listen(val.post.webpackDev,"localhost",function(err){
+}).listen(val.posts.webpackDev,"localhost",function(err){
 });

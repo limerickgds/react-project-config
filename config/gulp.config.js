@@ -1,7 +1,8 @@
 var path       = require('path');
+var val        = require('./var.js');
 var root       = './';
 var src        = './src';
-var assets     = './assets';
+var devbuild     = './devbuild';
 var build      = './build';
 var cdn        = './r';
 
@@ -10,9 +11,9 @@ var dir_config = {
   sass_dest: build + '/css',
   ftl_src: root + 'templates/**/*.{ftl,html}',
   ftl_dest: build + '/tpl',
-  ftl_dest_dev: assets + '/tpl',
+  ftl_dest_dev: devbuild + '/tpl',
   ftl_pages_src: root + 'templates/pages/',
-  ftl_pages_dest_dev: assets + '/tpl/pages'
+  ftl_pages_dest_dev: devbuild + '/tpl/pages'
 };
 module.exports = {
   clean: {
@@ -27,7 +28,10 @@ module.exports = {
   },
   tplreplace: {
     src: dir_config.ftl_pages_src,
-    dest: dir_config.ftl_pages_dest_dev
+    dest: dir_config.ftl_pages_dest_dev,
+    options:{
+      pre: 'http://localhost:'+ val.posts.webpackDev + '/devbuild/javascript/'
+    }
   },
   tplCopy: {
     dev:{

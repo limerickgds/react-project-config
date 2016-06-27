@@ -40,12 +40,12 @@
  图片配置，限制base64的图片大小为10kb，超过的图片放到../res目录下。
 
 #### 开发环境
-使用了puer-freemarker模板编译服务，webpack-dev-server。输出到assets目录下，步骤如下：
+使用了puer-freemarker模板编译服务，webpack-dev-server。输出到devbuild目录下，步骤如下：
 ```javascript
-"dev": "rimraf ./assets && npm run replace && npm run gulp:dev"
+"dev": "rimraf ./devbuild && npm run replace && npm run gulp:dev"
 ```
 1. clean  
-  删除assets目录
+  删除devbuild目录
 2. npm run replace  
   将ftl文件中script的src路径代理到webpackDevServer，因为freemarker的服务直接引入的js是找不到webpackDevServer编译后的js，端口不一致，需要修改路径。
 3. npm run gulp:dev  
