@@ -62,7 +62,8 @@ webpack.config.js | webpack生产环境配置文件
 webpack.server.config.js | webpack开发环境配置文件
 puerf | freemarker配置文件包括mock数据
 
-在开发多页面应用时需要我们修改的主要有一下几个地方：
+在开发多页面应用时需要我们修改的主要有一下几个地方：  
+
 1. 多页面入口配置  
 在var.js中pages就是配置每个页面入口文件，如下所示：
 ```js
@@ -78,7 +79,8 @@ var pages = [
     }
 ];
 ```
-当我们添加页面时，就需要手动添加每个页面的相关信息。
+当我们添加页面时，就需要手动添加每个页面的相关信息。  
+
 2. 端口号
 开发环境启动了两个server，分别是8010端口的webpackServer和8888端口的puerf，大家可以根据需要修改端口号，只需要修改var.js中的posts，如下：
 ```js
@@ -86,7 +88,8 @@ var posts = {
   puerf: 8888,  //puerf 端口号
   webpackDev: 8010 //webpackDev端口号
 };
-```
+```  
+
 3. 启用其它server服务，可能存在使用tomcat启动server的，不使用puerf，只需要在gulpfile.js注释掉puef任务即可：
 ```js
 gulp.task('dev',function(cb){
