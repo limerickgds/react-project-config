@@ -23,8 +23,8 @@
 ## 基本任务
 #### 生产环境
 主要使用webpack进行了多页面的打包配置，将打包后文件输出到build目录，具体步骤如下：
-```javascript
-"build": "npm run clean && gulp tpl:copy && npm run webpack"
+```js
+"build": "gulp build && npm run webpack"
 ```
 1. clean  
   删除原有build目录。
@@ -41,8 +41,8 @@
 
 #### 开发环境
 使用了puer-freemarker模板编译服务，webpack-dev-server。输出到devbuild目录下，步骤如下：
-```javascript
-"dev": "rimraf ./devbuild && npm run replace && npm run gulp:dev"
+```js
+"dev": "gulp:dev"
 ```
 1. clean  
   删除devbuild目录
@@ -50,6 +50,58 @@
   将ftl文件中script的src路径代理到webpackDevServer，因为freemarker的服务直接引入的js是找不到webpackDevServer编译后的js，端口不一致，需要修改路径。
 3. npm run gulp:dev  
   运行gulp:dev。webpackDevServer和puer-freemarker需要同时启动，所以需要child_process来处理。直接在npm run 两个任务无法同时运行。
+
+## 开发配置
+&emsp;&emsp;所有配置文件都放置于config文件下
+
+name | explain
+---|---
+var | 基础变量配置文件
+gulp.config.js | gulp任务配置文件
+webpack.config.js | webpack生产环境配置文件
+webpack.server.config.js | webpack开发环境配置文件
+puerf | freemarker配置文件包括mock数据
+
+在开发多页面应用时需要我们修改的主要有一下几个地方：
+1. 多页面入口配置  
+在var.js中pages就是配置每个页面入口文件，如下所示：
+```js
+var pages = [
+  {
+    name: 'index',  //chunk名
+    entry: 'index.js', //入口js文件
+    ftl: 'index.ftl'  //模板入口
+  },{
+      name: 'product/index',
+      entry: 'product/index.js',
+      ftl: 'product/index.ftl'
+    }
+];
+```
+当我们添加页面时，就需要手动添加每个页面的相关信息。
+2. 端口号
+开发环境启动了两个server，分别是8010端口的webpackServer和8888端口的puerf，大家可以根据需要修改端口号，只需要修改var.js中的posts，如下：
+```js
+var posts = {
+  puerf: 8888,  //puerf 端口号
+  webpackDev: 8010 //webpackDev端口号
+};
+```
+3. 启用其它server服务，可能存在使用tomcat启动server的，不使用puerf，只需要在gulpfile.js注释掉puef任务即可：
+```js
+gulp.task('dev',function(cb){
+  runSequence(
+    'clean:dev',
+    'tpl:copy:dev',
+    'tplreplace',
+    'js:serve',
+//    'puerf',
+    'watch',
+    cb);
+});
+```
+
+
 
 ## 其它问题
 - 端口号问题，大家可以自行修改。
