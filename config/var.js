@@ -19,7 +19,7 @@ var filePath = {
   tpl: path.resolve(__dirname,'../build/tpl'),
   tpl_dev: path.resolve(__dirname,'../devbuild/tpl')
 };
-
+var chunks = [];
 /**
  * [pages 多页面配置]
  * 配置每个页面的name，入口js，入口ftl
@@ -52,6 +52,7 @@ var pagesToPath = function(env){
       templates: path.resolve(filePath.templates, 'pages/'+_page.ftl)
     };
     _p.push(_obj);
+    chunks.push(_page.name);
   });
   return _p;
 };
@@ -59,5 +60,6 @@ module.exports = {
   filePath: filePath,
   pages: pages,
   pagesToPath: pagesToPath,
-  posts: posts
+  posts: posts,
+  chunks: chunks
 };

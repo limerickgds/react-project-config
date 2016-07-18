@@ -103,9 +103,3 @@ gulp.task('dev',function(cb){
     cb);
 });
 ```
-
-
-
-## 其它问题
-- 端口号问题，大家可以自行修改。
-- puer-freemarker这个只是目前使用的一个模板server，大家也可以用tomcat启动其它server，直接将配置中的puer 注释掉即可。

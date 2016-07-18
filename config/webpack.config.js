@@ -37,12 +37,13 @@ var webpackConfig = {
       }
     ]
   },
-  externals: {
-      'react' : 'React',
-      'react-dom' : 'ReactDom'
-  },
   plugins: [
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      filename: "common.[hash].js",
+      chunks: val.chunks
+    }),
     new webpack.optimize.UglifyJsPlugin(),
   ]
 };
